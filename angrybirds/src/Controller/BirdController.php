@@ -6,7 +6,9 @@ namespace App\Controller;
 use App\Entity\Bird;
 use App\Repository\BirdRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
 class BirdController extends AbstractController
@@ -29,5 +31,11 @@ class BirdController extends AbstractController
         ]);
     }
 
+    #[Route('/download/calendar', name: 'bird_calendar')]
+    public function calendar()
+    {
+      
+        return $this->file('documents/angry_birds_2015_calendar.pdf', "Calendar.pdf", ResponseHeaderBag::DISPOSITION_ATTACHMENT);
+    }
 
 }
