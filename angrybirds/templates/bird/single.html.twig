@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{bird.name}}
+{% endblock %}
+
+{% block body %}
+
+	<div class='text-center'>
+		<h1>{{bird.name}}</h1>
+
+		<img src="{{asset('images/' ~ bird.image ) }}" alt="image de l'oiseau {{bird.name}} de angrybirds">
+
+		<p>{{bird.description}}</p>
+
+		<a href="{{ path('homepage')}}">Retour à la page précédente</a>
+	</div>
+
+
+{% endblock %}

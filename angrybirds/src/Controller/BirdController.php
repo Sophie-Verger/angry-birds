@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use App\Model\BirdModel;
+use App\Entity\Bird;
 use App\Repository\BirdRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,4 +19,15 @@ class BirdController extends AbstractController
             'birds' => $birdRepository->findAll(),
         ]);
     }
+
+    #[Route('/{id}', name: 'bird_single')]
+    public function single(Bird $bird, BirdRepository $birdRepository)
+    {
+     
+        return $this->render('bird/single.html.twig', [
+            'bird' => $birdRepository->find($bird->getId()),
+        ]);
+    }
+
+
 }
